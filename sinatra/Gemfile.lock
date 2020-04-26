@@ -1,0 +1,64 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    backports (3.17.0)
+    better_errors (2.6.0)
+      coderay (>= 1.0.0)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
+    binding_of_caller (0.8.0)
+      debug_inspector (>= 0.0.1)
+    coderay (1.1.2)
+    debug_inspector (0.0.3)
+    erubi (1.9.0)
+    method_source (1.0.0)
+    multi_json (1.14.1)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
+    mysql2 (0.5.2)
+    pg (1.2.3)
+    pry (0.13.0)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    rack (2.2.2)
+    rack-protection (2.0.8.1)
+      rack
+    ruby2_keywords (0.0.2)
+    sequel (5.30.0)
+    sinatra (2.0.8.1)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.8.1)
+      tilt (~> 2.0)
+    sinatra-contrib (2.0.8.1)
+      backports (>= 2.8.2)
+      multi_json
+      mustermann (~> 1.0)
+      rack-protection (= 2.0.8.1)
+      sinatra (= 2.0.8.1)
+      tilt (~> 2.0)
+    slim (4.0.1)
+      temple (>= 0.7.6, < 0.9)
+      tilt (>= 2.0.6, < 2.1)
+    temple (0.8.2)
+    tilt (2.0.10)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  better_errors
+  binding_of_caller
+  mysql2 (= 0.5.2)
+  pg
+  pry
+  sequel
+  sinatra
+  sinatra-contrib
+  slim
+
+RUBY VERSION
+   ruby 2.6.2p47
+
+BUNDLED WITH
+   1.17.2

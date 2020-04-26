@@ -1,0 +1,20 @@
+# frozen_string_literal: true
+
+ruby '2.6.2'
+source 'https://rubygems.org'
+
+gem 'mysql2', '0.5.2'
+gem 'sequel'
+gem 'sinatra'
+gem 'sinatra-contrib'
+gem 'slim'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry'
+end
+
+group :production do
+  gem 'pg'
+end
