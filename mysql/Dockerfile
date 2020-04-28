@@ -1,9 +1,11 @@
 # vi: ft=dockerfile
-FROM mysql/mysql-server:5.7
+FROM mysql:5.7
 
 ENV MYSQL_ROOT_PASSWORD 1234
 ENV MYSQL_USER suki60
 ENV MYSQL_PASSWORD 1234
 ENV MYSQL_DATABASE white-pepper
+
+COPY ./init.sql /docker-entrypoint-initdb.d/
 
 CMD ["mysqld"]
