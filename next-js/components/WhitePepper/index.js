@@ -17,11 +17,11 @@ function getPepper(x, y) {
 function WhitePepper({ initialPeppers = [] }) {
   const classes = useStyles()
   const [state, setState] = useState({ action: 'get', peppers: initialPeppers })
-
   const isLastPepper = (i) => state.peppers.length === i + 1
 
   const createPepper = async (x, y, removeLastPepper = false) => {
     const pepper = await getPepper(x, y)
+
     if (removeLastPepper) {
       const { peppers } = state
       peppers.pop()

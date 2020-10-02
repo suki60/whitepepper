@@ -13,9 +13,7 @@ function Pepper({
   })
 
   const handleOnBlur = () => (ref.current.value.length === 0 ? deletePepper(id) : updatePepper(id, ref.current.value))
-
   const stopPropagation = e => { e.stopPropagation() }
-
   const resize = () => { ref.current.size = ref.current.value.length + 1 }
 
   const preventUnfocusWithTab = () => {
