@@ -2,11 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import { WhitePepper } from 'components'
+import config from 'config/config.js'
 
 function getData(ctx) {
   return axios({
     method: 'get',
-    baseURL: 'http://localhost:9292',
+    baseURL: config.serverApiUrl,
     url: '/',
     withCredentials: true,
     headers: ctx.req.headers.cookie ? { cookie: ctx.req.headers.cookie } : undefined

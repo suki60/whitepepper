@@ -6,10 +6,20 @@ services:
             - nt
     sinatra:
         build: ./sinatra
+        ports: 
+            - "9292:9292"
         networks:
             - nt
         depends_on:
         - mysql
+    next-js:
+        build: ./next-js
+        ports:
+            - "3000:3000"
+        networks:
+            - nt
+        depends_on:
+            - sinatra
 networks:
     nt:
         driver: bridge

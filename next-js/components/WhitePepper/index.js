@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import { Pepper } from 'components'
+import config from 'config/config.js'
 import useStyles from './styles'
 
 function getPepper(x, y) {
   return axios({
     method: 'post',
-    baseURL: 'http://localhost:9292',
+    baseURL: config.clientApiUrl,
     url: '/pepper',
     withCredentials: true,
     params: { x, y }
@@ -33,7 +34,7 @@ function WhitePepper({ initialPeppers = [] }) {
 
   const updatePepper = (id, text) => {
     axios.put(
-      'http://localhost:9292/pepper',
+      `${config.clientApiUrl}/pepper`,
       null,
       {
         params: { id, text },
@@ -43,7 +44,7 @@ function WhitePepper({ initialPeppers = [] }) {
   }
 
   const deletePepper = (id) => {
-    axios.delete('http://localhost:9292/pepper', {
+    axios.delete(`${config.clientApiUrl}/pepper`, {
       params: { id },
       withCredentials: true
     })
