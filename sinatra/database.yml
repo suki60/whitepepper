@@ -1,6 +1,6 @@
 development:
   adapter: 'mysql2'
-  host: '127.0.0.1'
+  host: 'mysql'
   database: 'white_pepper'
   user: 'suki60'
   password: '1234'

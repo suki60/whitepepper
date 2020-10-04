@@ -7,5 +7,4 @@ RUN bundle install
 
 COPY . .
 
-# Running app
-RUN bundle exec rackup
+CMD bundle exec rackup

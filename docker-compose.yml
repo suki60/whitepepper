@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+    mysql:
+        build: ./mysql
+        networks:
+            - nt
+    sinatra:
+        build: ./sinatra
+        networks:
+            - nt
+        depends_on:
+        - mysql
+networks:
+    nt:
+        driver: bridge
