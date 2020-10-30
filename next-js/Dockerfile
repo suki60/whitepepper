@@ -1,5 +1,7 @@
 FROM node:erbium-alpine
 
+RUN apk add --no-cache bash
+
 # Setting working directory. All the path will be relative to WORKDIR
 WORKDIR /app
 
