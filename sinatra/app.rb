@@ -45,7 +45,7 @@ class WhitePepper < Sinatra::Base
 
     halt 200 if request.request_method == 'OPTIONS'
 
-    user_id = env['rack.session']['session_id'].to_s[0..6]
+    user_id = params[:user_id] || env['rack.session']['session_id'].to_s[0..6]
     @user = User[user_id]
 
     unless @user
@@ -58,7 +58,7 @@ class WhitePepper < Sinatra::Base
   get '/' do
     peppers = Pepper.where(user_id: @user.id).all
     peppers_cleaned = clean_up_peppers(peppers)
-    return JSON.generate(peppers: serialize_peppers(peppers_cleaned))
+    return JSON.generate(peppers: serialize_peppers(peppers_cleaned), user_id: @user.id)
   end
 
   post '/pepper' do
