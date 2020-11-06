@@ -21,7 +21,7 @@ function WhitePepper({ initialPeppers = [], userId }) {
   const [state, setState] = useState({ action: 'get', peppers: initialPeppers })
   const isLastPepper = (i) => state.peppers.length === i + 1
 
-  const createPepper = async (x, y, userId, removeLastPepper = false) => {
+  const createPepper = (userId) => async (x, y, removeLastPepper = false) => {
     const pepper = await getPepper(x, y, userId)
 
     if (removeLastPepper) {
@@ -54,12 +54,12 @@ function WhitePepper({ initialPeppers = [], userId }) {
   return (
     <div
       className={classes.whitePepper}
-      onClick={e => { createPepper(e.clientX - 1, e.clientY - 18, userId) }}
+      onClick={e => { createPepper(userId)(e.clientX - 1, e.clientY - 18, userId) }}
     >
       {state.peppers.map((pepper, i) => (
         <Pepper
           action={state.action}
-          createPepper={createPepper}
+          createPepper={createPepper(userId)}
           deletePepper={deletePepper}
           focus={isLastPepper(i) && state.action === 'post'}
           id={pepper.id}
