@@ -9,22 +9,21 @@ function getData(ctx) {
     method: 'get',
     baseURL: config.serverApiUrl,
     url: '/',
+    withCredentials: true,
     headers: ctx.req.headers.cookie ? { cookie: ctx.req.headers.cookie } : undefined
-  }).then(res => {
-    return res
-  })
+  }).then(res => res)
 }
 
-function Index({ peppers = [], user_id }) {
+function Index({ peppers = [] }) {
   return (
-    <WhitePepper initialPeppers={peppers} userId={user_id} />
+    <WhitePepper initialPeppers={peppers} />
   )
 }
 
 Index.getInitialProps = async ctx => {
   const res = await getData(ctx)
   if (res.headers['set-cookie']) ctx.res.setHeader('Set-Cookie', res.headers['set-cookie'])
-  return { peppers: res.data.peppers, user_id: res.data.user_id }
+  return { peppers: res.data.peppers }
 }
 
 Index.propTypes = {

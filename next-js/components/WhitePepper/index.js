@@ -5,47 +5,48 @@ import { Pepper } from 'components'
 import config from 'config/config.js'
 import useStyles from './styles'
 
-function getPepper(x, y, userId) {
+function getPepper(x, y) {
   return axios({
     method: 'post',
     baseURL: config.clientApiUrl,
     url: '/pepper',
-    params: { x, y, user_id: userId }
-  }).then(res => {
-    return res.data
-  })
+    withCredentials: true,
+    params: { x, y }
+  }).then(res => res.data)
 }
 
-function WhitePepper({ initialPeppers = [], userId }) {
+function WhitePepper({ initialPeppers = [] }) {
   const classes = useStyles()
   const [state, setState] = useState({ action: 'get', peppers: initialPeppers })
   const isLastPepper = (i) => state.peppers.length === i + 1
 
-  const createPepper = (userId) => async (x, y, removeLastPepper = false) => {
-    const pepper = await getPepper(x, y, userId)
+  const createPepper = async (x, y, removeLastPepper = false) => {
+    const pepper = await getPepper(x, y)
 
     if (removeLastPepper) {
       const { peppers } = state
       peppers.pop()
-      setState({ action: "post", peppers: peppers.concat([pepper]) })
+      setState({ action: 'post', peppers: peppers.concat([pepper]) })
     } else {
-      setState({ action: "post", peppers: state.peppers.concat([pepper]) })
+      setState({ action: 'post', peppers: state.peppers.concat([pepper]) })
     }
   }
 
-  const updatePepper = (userId) => (id, text) => {
+  const updatePepper = (id, text) => {
     axios.put(
       `${config.clientApiUrl}/pepper`,
       null,
       {
-        params: { id, text, user_id: userId },
+        params: { id, text },
+        withCredentials: true
       }
     )
   }
 
   const deletePepper = (id) => {
     axios.delete(`${config.clientApiUrl}/pepper`, {
-      params: { id, user_id: userId },
+      params: { id },
+      withCredentials: true
     })
 
     setState({ action: 'delete', peppers: state.peppers.filter(pepper => pepper.id !== id) })
@@ -54,7 +55,7 @@ function WhitePepper({ initialPeppers = [], userId }) {
   return (
     <div
       className={classes.whitePepper}
-      onClick={e => { createPepper(userId)(e.clientX - 1, e.clientY - 18, userId) }}
+      onClick={e => { createPepper(e.clientX - 1, e.clientY - 18) }}
     >
       {state.peppers.map((pepper, i) => (
         <Pepper
@@ -66,7 +67,7 @@ function WhitePepper({ initialPeppers = [], userId }) {
           peppers={state.peppers}
           setState={setState}
           text={pepper.text}
-          updatePepper={updatePepper(userId)}
+          updatePepper={updatePepper}
           key={`${pepper.x}${pepper.y}`}
           x={pepper.x}
           y={pepper.y}
