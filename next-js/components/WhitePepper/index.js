@@ -60,7 +60,7 @@ function WhitePepper({ initialPeppers = [] }) {
       {state.peppers.map((pepper, i) => (
         <Pepper
           action={state.action}
-          createPepper={createPepper(userId)}
+          createPepper={createPepper}
           deletePepper={deletePepper}
           focus={isLastPepper(i) && state.action === 'post'}
           id={pepper.id}
