@@ -9,7 +9,6 @@ function getData(ctx) {
     method: 'get',
     baseURL: config.serverApiUrl,
     url: '/',
-    withCredentials: true,
     headers: ctx.req.headers.cookie ? { cookie: ctx.req.headers.cookie } : undefined
   }).then(res => res)
 }
