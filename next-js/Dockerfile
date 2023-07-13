@@ -6,7 +6,8 @@ RUN apk add --no-cache bash
 WORKDIR /app
 
 # Installing dependencies
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock certificate.pem ./
+ENV NODE_EXTRA_CA_CERTS="./certificate.pem"
 RUN yarn install
 
 # Copying source files
