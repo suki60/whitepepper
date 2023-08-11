@@ -12,6 +12,6 @@ RUN bundle install
 
 COPY . .
 
-EXPOSE 9292
+EXPOSE 9293
 
-CMD ["wait-for-it", "mysql:3306", "-t", "600", "--", "bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "9292"]
+CMD ["wait-for-it", "mysql:3306", "-t", "600", "--", "bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "9293"]

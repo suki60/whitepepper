@@ -9,7 +9,7 @@ services:
         volumes:
              - "./sinatra:/app"
         ports: 
-            - "9292:9292"
+            - "9293:9293"
         networks:
             - nt
         depends_on:
