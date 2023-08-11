@@ -35,7 +35,7 @@ class WhitePepper < Sinatra::Base
 
   before do
     headers(
-      { 'Access-Control-Allow-Origin' => 'http://localhost',
+      { 'Access-Control-Allow-Origin' => 'http://13.48.135.245',
         'Access-Control-Allow-Credentials' => 'true',
         'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
         'Access-Control-Allow-Headers' => 'Content-Type,
