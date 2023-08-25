@@ -18,7 +18,7 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    'semi': OFF,
+    'semi': [ERROR, "never"],
     'comma-dangle': OFF,
     'arrow-parens': OFF,
     'max-len': [WARNING, 120],
