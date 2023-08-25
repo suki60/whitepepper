@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
-import { WhitePepper } from 'components'
-import config from 'config/config'
+import { WhitePepper } from '~/components'
+import config from '~/config/config'
 
 function getData(ctx) {
   return axios({
